@@ -37,7 +37,6 @@ The main requirements included:
 
 ## 📁 Supporting Files
 
-- 📋 [Scenario 1 Requirements](./Scenario-1-Requirements.pdf)
 - 🗺️ [Network Topology](./Scenario-1-Network-Diagram.png)
 - 📄 [VLSM & IP Addressing](./Scenario-1-VLSM-IP-Addressing.pdf)
 - 💻 [Packet Tracer Project](./Scenario-1.pkt)
