@@ -37,6 +37,6 @@ The main requirements included:
 
 ## 📁 Supporting Files
 
-- 🗺️ [Network Topology](./Scenario-1-Network-Diagram.png)
+- 🗺️ [Network Topology](./Scenario-1-Network-Topology.png)
 - 📄 [VLSM & IP Addressing](./Scenario-1-VLSM-IP-Addressing.pdf)
 - 💻 [Packet Tracer Project](./Scenario-1.pkt)
