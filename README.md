@@ -75,3 +75,16 @@ Enterprise-Network-Design-Troubleshooting
 ## 🚀 About This Repository
 
 Each scenario focuses on solving a complete networking problem—from understanding the requirements and designing the network to configuring devices, verifying connectivity, and troubleshooting issues. Together, these scenarios demonstrate how multiple networking technologies work together to build and maintain enterprise networks.
+
+## 📖 Scenario Walkthrough
+
+Explore each networking scenario below:
+
+| Scenario | Description |
+|----------|-------------|
+| 🌐 [Scenario 1](./Scenario-1) | Enterprise network design and IP address planning |
+| 🌐 [Scenario 2](./Scenario-2) | Routing, switching, and network services |
+| 🌐 [Scenario 3](./Scenario-3) | Dynamic routing and enterprise connectivity |
+| 🌐 [Scenario 4](./Scenario-4) | Network security and access control |
+| 🌐 [Scenario 5](./Scenario-5) | Enterprise network implementation |
+| 🌐 [Scenario 6](./Scenario-6) | Complete network configuration and troubleshooting |
