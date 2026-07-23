@@ -41,6 +41,6 @@ The main requirements included:
 - 📄 [VLSM & IP Addressing](./Scenario-1-VLSM-IP-Addressing.png)
 - 🏷️ [VLAN Configuration](./Scenario-1-VLAN-Configuration.png)
 - 🌐 [Trunk Configuration](./Scenario-1-Trunk-Configuration.png)
-- 🛣️ [Routing Table (Gateway Router)](./Scenario-1-RIPv2.png)
+- 🛣️ [Routing Protocol (RIPv2)](./Scenario-1-RIPv2.png)
 - 📡 [Connectivity Test](./Scenario-1-Connectivity-Test.png)
 - 💻 [Packet Tracer Project](./1C.pkt)
