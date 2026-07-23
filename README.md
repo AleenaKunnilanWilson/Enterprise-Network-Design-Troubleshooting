@@ -10,7 +10,7 @@ The scenarios combine multiple networking technologies to build complete end-to-
 
 Each scenario includes:
 
-- 📄 Scenario requirements (question paper)
+- 📄 Scenario requirements
 - 🗺️ Network topology diagram
 - 📋 VLSM / IP addressing table
 - 💻 Cisco Packet Tracer (.pkt) file
