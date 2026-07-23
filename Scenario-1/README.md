@@ -39,4 +39,4 @@ The main requirements included:
 
 - 🗺️ [Network Topology](./Scenario-1-Network-Topology.png)
 - 📄 [VLSM & IP Addressing](./Scenario-1-VLSM-IP-Addressing.png)
-- 💻 [Packet Tracer Project](./Scenario-1.pkt)
+- 💻 [Packet Tracer Project](./1C.pkt)
