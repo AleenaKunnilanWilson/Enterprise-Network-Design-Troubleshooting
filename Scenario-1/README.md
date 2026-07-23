@@ -6,13 +6,20 @@ This scenario focuses on designing and configuring a basic enterprise network us
 
 ---
 
-## 🎯 Objectives
+## 📋 Scenario Requirements
 
-- Design the network based on the provided topology
-- Perform VLSM subnetting and IP address allocation
-- Configure VLANs and inter-VLAN routing
-- Implement static and dynamic routing using RIPv2
-- Verify end-to-end network connectivity :contentReference[oaicite:1]{index=1}
+In this scenario, the objective was to design and configure an enterprise network consisting of three routers and one switch using Cisco Packet Tracer.
+
+The main requirements included:
+
+- Design the network based on the provided topology.
+- Perform VLSM subnetting for the corporate network.
+- Configure VLANs and inter-VLAN routing.
+- Configure router and switch interfaces.
+- Configure switch management and port security.
+- Implement static routing between the enterprise gateway and ISP.
+- Configure RIPv2 on the internal routers.
+- Verify end-to-end connectivity across the network.
 
 ---
 
