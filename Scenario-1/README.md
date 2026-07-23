@@ -26,3 +26,11 @@ This scenario focuses on designing and configuring a basic enterprise network us
 - Configured static routes and implemented RIPv2
 - Verified routing tables and end-to-end connectivity :contentReference[oaicite:2]{index=2} :contentReference[oaicite:3]{index=3}
   
+---
+
+## 📁 Supporting Files
+
+- 📋 [Scenario 1 Requirements](./Scenario-1-Requirements.pdf)
+- 🗺️ [Network Topology](./Scenario-1-Network-Diagram.png)
+- 📄 [VLSM & IP Addressing](./Scenario-1-VLSM-IP-Addressing.pdf)
+- 💻 [Packet Tracer Project](./Scenario-1.pkt)
