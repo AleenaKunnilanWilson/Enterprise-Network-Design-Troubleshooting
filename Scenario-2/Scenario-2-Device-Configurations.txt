@@ -1,0 +1,873 @@
+=========================================
+Kodad_S3 (Switch)
+=========================================
+
+
+Kodad_S3#sh run
+Building configuration...
+
+Current configuration : 2220 bytes
+!
+version 16.3.2
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Kodad_S3
+!
+!
+enable password cisco
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet1/0/1
+!
+interface GigabitEthernet1/0/2
+!
+interface GigabitEthernet1/0/3
+!
+interface GigabitEthernet1/0/4
+!
+interface GigabitEthernet1/0/5
+!
+interface GigabitEthernet1/0/6
+!
+interface GigabitEthernet1/0/7
+!
+interface GigabitEthernet1/0/8
+!
+interface GigabitEthernet1/0/9
+!
+interface GigabitEthernet1/0/10
+!
+interface GigabitEthernet1/0/11
+ description TRUNK to Kodad_R1 G0/0/1
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/12
+!
+interface GigabitEthernet1/0/13
+ description PC1 on VLAN 677
+ switchport access vlan 677
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security maximum 4
+ switchport port-security mac-address sticky 
+ switchport port-security violation protect 
+ switchport port-security mac-address sticky 0060.5CA3.706C
+!
+interface GigabitEthernet1/0/14
+ description Spare PC on VLAN 677
+ switchport access vlan 677
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security maximum 4
+ switchport port-security mac-address sticky 
+ switchport port-security violation protect 
+!
+interface GigabitEthernet1/0/15
+!
+interface GigabitEthernet1/0/16
+!
+interface GigabitEthernet1/0/17
+!
+interface GigabitEthernet1/0/18
+!
+interface GigabitEthernet1/0/19
+!
+interface GigabitEthernet1/0/20
+!
+interface GigabitEthernet1/0/21
+!
+interface GigabitEthernet1/0/22
+!
+interface GigabitEthernet1/0/23
+!
+interface GigabitEthernet1/0/24
+!
+interface GigabitEthernet1/1/1
+!
+interface GigabitEthernet1/1/2
+!
+interface GigabitEthernet1/1/3
+!
+interface GigabitEthernet1/1/4
+!
+interface Vlan1
+ ip address 148.67.8.194 255.255.255.224
+!
+ip default-gateway 148.67.8.193
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+banner motd ^CUnauthorized access prohibited.
+Student: Aleena Kunnilan Wilson | ID: 105058677 | Lab: Scenario 2 - PASS^C
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ password cisco
+ login
+ transport input telnet
+!
+!
+!
+!
+end
+
+
+Kodad_S3#
+
+
+=========================================
+Pargi_S2 (Switch)
+=========================================
+
+
+Pargi_S2#sh run
+Building configuration...
+
+Current configuration : 1290 bytes
+!
+version 15.0
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Pargi_S2
+!
+enable password cisco
+!
+!
+!
+no ip domain-lookup
+!
+!
+
+vlan 1
+ name Management_Pargi
+vlan 58
+ name Milk
+vlan 130
+ name Bread
+
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+!
+interface FastEthernet0/2
+!
+interface FastEthernet0/3
+!
+interface FastEthernet0/4
+!
+interface FastEthernet0/5
+!
+interface FastEthernet0/6
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface FastEthernet0/13
+!
+interface FastEthernet0/14
+!
+interface FastEthernet0/15
+!
+interface FastEthernet0/16
+!
+interface FastEthernet0/17
+!
+interface FastEthernet0/18
+!
+interface FastEthernet0/19
+!
+interface FastEthernet0/20
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+!
+interface FastEthernet0/23
+!
+interface FastEthernet0/24
+ switchport access vlan 58
+ switchport mode access
+ switchport port-security
+ switchport port-security maximum 1
+ switchport port-security mac-address 0000.0000.0000   
+ switchport port-security violation protect
+!
+interface GigabitEthernet0/1
+ switchport mode trunk
+
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ ip address 148.67.8.226 255.255.255.224
+!
+ip default-gateway 148.67.8.225
+!
+!
+!
+!
+line con 0
+!
+line vty 0 4
+ password cisco
+ login
+ transport input telnet
+line vty 5 15
+ login
+!
+!
+!
+!
+end
+
+
+Pargi_S2#
+
+
+
+=========================================
+Kodad_R1 (Router)
+=========================================
+
+
+
+Kodad_R1#sh run
+Building configuration...
+
+Current configuration : 1701 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Kodad_R1
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface GigabitEthernet0/0/1
+ description Uplink to Kodad_S3 (TRUNK)
+ no ip address
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/1.1
+ description VLAN 1 (Kodad mgmt)
+ encapsulation dot1Q 1
+ ip address 148.67.8.193 255.255.255.224
+!
+interface GigabitEthernet0/0/1.677
+ description VLAN 677 (Eggs)
+ encapsulation dot1Q 677
+ ip address 148.67.0.1 255.255.248.0
+ ip access-group ACLVLAN677 in
+!
+interface Serial0/1/0
+ description TO Pargi_R2
+ ip address 148.67.9.33 255.255.255.252
+!
+interface Serial0/1/1
+ description TO Bidar_R3
+ ip address 148.67.9.41 255.255.255.252
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router rip
+ version 2
+ passive-interface default
+ no passive-interface Serial0/1/0
+ no passive-interface Serial0/1/1
+ network 148.0.0.0
+ network 148.67.0.0
+ no auto-summary
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+ip access-list extended ACLVLAN677
+ remark --- VLAN677 policy to ISP loopbacks ---
+ deny tcp 148.67.0.0 0.0.7.255 host 138.80.0.1 eq www
+ permit tcp 148.67.0.0 0.0.7.255 host 44.0.0.1 eq www
+ deny ip 148.67.0.0 0.0.7.255 host 44.0.0.1
+ deny ip 148.67.0.0 0.0.7.255 host 159.23.0.1
+ permit ip any any
+!
+no cdp run
+!
+banner motd ^CUnauthorized access prohibited.
+Student: Aleena Kunnilan Wilson | ID: 105058677 | Lab: Scenario 2 - PASS^C
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+
+Kodad_R1#
+
+
+
+=========================================
+Pargi_R2 (Router)
+=========================================
+
+Pargi_R2#sh run
+Building configuration...
+
+Current configuration : 1542 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Pargi_R2
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface GigabitEthernet0/0/1
+ description Uplink to Pargi_S2 (TRUNK)
+ no ip address
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/1.1
+ description VLAN 1 (Pargi mgmt)
+ encapsulation dot1Q 1 native
+ ip address 148.67.8.225 255.255.255.224
+!
+interface GigabitEthernet0/0/1.58
+ description VLAN 58 (Milk)
+ encapsulation dot1Q 58
+ ip address 148.67.8.1 255.255.255.128
+!
+interface GigabitEthernet0/0/1.130
+ description VLAN 130 (Bread)
+ encapsulation dot1Q 130
+ ip address 148.67.8.129 255.255.255.192
+!
+interface Serial0/1/0
+ description TO Kodad_R1
+ ip address 148.67.9.34 255.255.255.252
+ clock rate 2000000
+!
+interface Serial0/1/1
+ description TO Bidar_R3
+ ip address 148.67.9.37 255.255.255.252
+ clock rate 2000000
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router rip
+ version 2
+ passive-interface default
+ no passive-interface Serial0/1/0
+ no passive-interface Serial0/1/1
+ network 148.0.0.0
+ network 148.67.0.0
+ no auto-summary
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+no cdp run
+!
+banner motd ^CUnauthorized access prohibited.
+Student: Aleena Kunnilan Wilson | ID: 105058677 | Lab: Scenario 2 - PASS^C
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+
+Pargi_R2#
+
+=========================================
+Bidar_R3 (Router)
+=========================================
+
+
+Bidar_R3#sh run
+Building configuration...
+
+Current configuration : 1400 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Bidar_R3
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Database Server LAN
+ ip address 148.67.9.1 255.255.255.224
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Serial0/1/0
+ description TO Kodad_R1
+ ip address 148.67.9.42 255.255.255.252
+ clock rate 2000000
+!
+interface Serial0/1/1
+ description TO Pargi_R2
+ ip address 148.67.9.38 255.255.255.252
+!
+interface Serial0/2/0
+ description TO ISP_R4
+ ip address 204.3.57.2 255.255.255.252
+!
+interface Serial0/2/1
+ no ip address
+ clock rate 2000000
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router rip
+ version 2
+ passive-interface default
+ no passive-interface Serial0/1/0
+ no passive-interface Serial0/1/1
+ network 148.0.0.0
+ network 148.67.0.0
+ default-information originate
+ no auto-summary
+!
+ip classless
+ip route 0.0.0.0 0.0.0.0 204.3.57.1 
+!
+ip flow-export version 9
+!
+!
+!
+no cdp run
+!
+banner motd ^CUnauthorized access prohibited.
+Student: Aleena Kunnilan Wilson | ID: 105058677 | Lab: Scenario 2 - PASS^C
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+
+Bidar_R3#
+
+
+=========================================
+ISP_R4 (Router)
+=========================================
+
+ISP_R4 (R4)
+
+
+ISP_R4#sh run
+Building configuration...
+
+Current configuration : 1303 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname ISP_R4
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description External Server 1
+ ip address 138.80.0.1 255.255.0.0
+!
+interface Loopback1
+ description External Server 2
+ ip address 44.0.0.1 255.0.0.0
+!
+interface Loopback2
+ description External Net (deny-all target)
+ ip address 159.23.0.1 255.255.0.0
+!
+interface Loopback3
+ description External Net (general Internet)
+ ip address 216.12.5.1 255.255.255.0
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Serial0/1/0
+ description TO Bidar_R3
+ ip address 204.3.57.1 255.255.255.252
+ clock rate 2000000
+!
+interface Serial0/1/1
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip classless
+ip route 148.67.0.0 255.255.0.0 204.3.57.2 
+!
+ip flow-export version 9
+!
+!
+!
+banner motd ^CUnauthorized access prohibited.
+Student: Aleena Kunnilan Wilson | ID: 105058677 | Lab: Scenario 2 - PASS^C
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+
+ISP_R4#
+
+=========================================
+Verification Commands
+=========================================
+
+show running-config
+show ip interface brief
+show ip route
+show ip protocols     ! verify RIP only on internal routers
+
+
+On Switches (S2, S3)
+
+show vlan brief
+show running-config
+show mac address-table
+show port-security interface g1/0/13  
+
+
+S3 (Kodad switch)
+
+show vlan brief
+show interfaces trunk
+ping 148.67.8.193
+ping 148.67.0.1
+
+S2 (Pargi switch)
+
+show vlan brief
+show interfaces trunk
+ping 148.67.8.225
+ping 148.67.8.1
+ping 148.67.8.129
+
+
+
+
+On R1
+
+show ip protocols
+show ip route
+ping 148.67.9.34
+ping 148.67.9.42
+ping 148.67.8.225
+ping 148.67.8.1
+ping 148.67.8.129
+ping 148.67.9.1
+show ip rip database
+
+router rip
+ version 2
+ no auto-summary
+ network 148.0.0.0
+
+
+On R2 (Pargi_R2)
+
+show ip protocols
+show ip route
+ping 148.67.9.33
+ping 148.67.9.38
+ping 148.67.8.193
+ping 148.67.9.1
+
+router rip
+ version 2
+ no auto-summary
+ network 148.0.0.0
+
+
+
+On R3 (Bidar_R3)
+
+show ip protocols
+show ip route
+ping 148.67.9.37
+ping 148.67.9.41
+ping 204.3.57.1
+ping 138.80.0.1
+ping 44.0.0.1
+ping 159.23.0.1
+ping 216.12.5.1
+
+router rip
+ version 2
+ no auto-summary
+ network 148.0.0.0
+
+
+R4 (ISP_R4)
+
+show ip route
+ping 204.3.57.2
+ping 148.67.8.193
+ping 148.67.8.225
+
+
+
