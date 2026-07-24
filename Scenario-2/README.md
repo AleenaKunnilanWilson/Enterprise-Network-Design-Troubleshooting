@@ -40,8 +40,8 @@ The main requirements included:
 ## 📁 Supporting Files
 
 - 🗺️ [Network Diagram](Scenario-2-Network-Diagram.png)
-- 📄 [IP Addressing](Scenario-2-IP-Addressing.png)
-- 🔒 [ACL Configuration](Scenario-2-ACL-Configuration.png)
+- 📄 [IP Addressing](Scenario-2-IP-address-form.png)
+- 🔒 [ACL Configuration](Scenario-2-Accesslists.png)
 - ✅ [ACL Verification](Scenario-2-ACL-Verification.png)
 - 📡 [Connectivity Test](Scenario-2-Connectivity-Test.png)
 - ⚙️ [Device Configurations](Scenario-2-Device-Configurations.txt)
