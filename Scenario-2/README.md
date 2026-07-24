@@ -45,4 +45,4 @@ The main requirements included:
 - ✅ [ACL Verification](Scenario-2-ACL-Verification.png)
 - 📡 [Connectivity Test](Scenario-2-Connectivity-Test.png)
 - ⚙️ [Device Configurations](Scenario-2-Device-Configurations.txt)
-- 💻 [Packet Tracer Project](2C.pkt)
+- 💻 [Packet Tracer Project](scenario_2.pkt)
