@@ -39,11 +39,10 @@ The main requirements included:
 
 ## 📁 Supporting Files
 
-- 🗺️ Network Topology
-- 📄 VLSM & IP Addressing
-- 🏷️ VLAN Configuration
-- 🌐 Trunk Configuration
-- 🛣️ Routing Protocol (RIPv2)
-- 🔒 Access Control List (ACL) Configuration
-- 📡 Connectivity Test
-- 💻 Packet Tracer Project
+- 🗺️ [Network Diagram](Scenario-2-Network-Diagram.png)
+- 📄 [IP Addressing](Scenario-2-IP-Addressing.png)
+- 🔒 [ACL Configuration](Scenario-2-ACL-Configuration.png)
+- ✅ [ACL Verification](Scenario-2-ACL-Verification.png)
+- 📡 [Connectivity Test](Scenario-2-Connectivity-Test.png)
+- ⚙️ [Device Configurations](Scenario-2-Device-Configurations.txt)
+- 💻 [Packet Tracer Project](2C.pkt)
