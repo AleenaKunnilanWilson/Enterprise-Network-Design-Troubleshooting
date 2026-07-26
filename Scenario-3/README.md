@@ -46,4 +46,4 @@ Access Control Lists (ACLs) were configured to secure access to external resourc
 - 🌍 [ACL Browser Access Test](Scenario-3-ACL-Browser-Access-Test.png)
 - 📡 [Connectivity Test](Scenario-3-Connectivity-Test.png)
 - ⚙️ [Device Configurations](Scenario-3-Device-Configurations.txt)
-- 💻 [Packet Tracer Project](3C.pkt)
+- 💻 [Packet Tracer Project](scenario_3.pkt)
