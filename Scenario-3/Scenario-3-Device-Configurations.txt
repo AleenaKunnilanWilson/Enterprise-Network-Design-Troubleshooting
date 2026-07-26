@@ -1,0 +1,485 @@
+R1#sh run
+Building configuration...
+
+Current configuration : 1822 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R1
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/1.1
+ description Interface for management vlan 1
+ encapsulation dot1Q 1 native
+ ip address 131.67.3.65 255.255.255.224
+!
+interface GigabitEthernet0/0/1.112
+ description Interface for vlan 112
+ encapsulation dot1Q 112
+ ip address 131.67.3.1 255.255.255.192
+!
+interface GigabitEthernet0/0/1.677
+ description Interface for vlan 677
+ encapsulation dot1Q 677
+ ip address 131.67.0.1 255.255.254.0
+ ip access-group ACL_HTTP in
+!
+interface Serial0/1/0
+ description SERIAL CONNECTION R1 TO R2
+ bandwidth 128
+ ip address 131.67.3.137 255.255.255.252
+!
+interface Serial0/1/1
+ description SERIAL CONNECTION R1 TO R3
+ bandwidth 64
+ ip address 131.67.3.145 255.255.255.252
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router eigrp 65
+ passive-interface default
+ no passive-interface Serial0/1/0
+ no passive-interface Serial0/1/1
+ network 131.67.3.136 0.0.0.3
+ network 131.67.3.144 0.0.0.3
+ network 131.67.0.0 0.0.1.255
+ network 131.67.3.0 0.0.0.63
+ network 131.67.3.64 0.0.0.31
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+ip access-list standard TELNET_R1
+ permit 131.67.0.0 0.0.1.255
+ deny any
+ip access-list extended ACLVLAN677
+ permit tcp 131.67.0.0 0.0.1.255 143.18.0.0 0.0.255.255 eq www
+ deny ip 131.67.0.0 0.0.1.255 143.18.0.0 0.0.255.255
+ permit ip 131.67.0.0 0.0.1.255 any
+!
+banner motd ^C^C
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ access-class TELNET_R1 in
+ password cisco
+ login
+!
+!
+!
+end
+
+
+R1#
+
+
+
+
+
+
+R2#sh run
+Building configuration...
+
+Current configuration : 1332 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R2
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/1.1
+ description Interface for vlan 1
+ encapsulation dot1Q 1 native
+ ip address 131.67.3.129 255.255.255.248
+!
+interface GigabitEthernet0/0/1.58
+ description Interface for vlan 58
+ encapsulation dot1Q 58
+ ip address 131.67.2.1 255.255.255.0
+!
+interface Serial0/1/0
+ description SERIAL CONNECTION R2 TO R1
+ bandwidth 128
+ ip address 131.67.3.138 255.255.255.252
+ clock rate 2000000
+!
+interface Serial0/1/1
+ description SERIAL CONNECTION R2 TO R3
+ bandwidth 512
+ ip address 131.67.3.141 255.255.255.252
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router eigrp 65
+ passive-interface default
+ no passive-interface Serial0/1/0
+ no passive-interface Serial0/1/1
+ network 131.67.3.136 0.0.0.3
+ network 131.67.3.140 0.0.0.3
+ network 131.67.2.0 0.0.0.255
+ network 131.67.3.128 0.0.0.7
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+banner motd ^C^C
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+
+R2#
+
+
+
+
+
+
+
+R3#sh run
+Building configuration...
+
+Current configuration : 1444 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R3
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Loopback 0
+ ip address 131.67.3.97 255.255.255.224
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Serial0/1/0
+ description SERIAL CONNECTION R3 TO R1
+ bandwidth 64
+ ip address 131.67.3.146 255.255.255.252
+ clock rate 2000000
+!
+interface Serial0/1/1
+ description SERIAL CONNECTION R3 TO R2
+ bandwidth 512
+ ip address 131.67.3.142 255.255.255.252
+ clock rate 2000000
+!
+interface Serial0/2/0
+ description SERIAL CONNECTION R3 TO R4
+ ip address 211.13.87.2 255.255.255.252
+!
+interface Serial0/2/1
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router eigrp 65
+ redistribute static 
+ network 131.67.3.144 0.0.0.3
+ network 131.67.3.140 0.0.0.3
+ network 131.67.3.96 0.0.0.31
+!
+ip classless
+ip route 0.0.0.0 0.0.0.0 211.13.87.1 
+!
+ip flow-export version 9
+!
+!
+ip access-list standard TELNET_DENY
+ deny 131.67.0.0 0.0.1.255
+ permit any
+!
+banner motd ^C^C
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+!
+line aux 0
+!
+line vty 0 4
+ access-class TELNET_DENY in
+ password cisco
+ login
+!
+!
+!
+end
+
+
+R3#
+
+
+
+
+
+
+
+ISP_R4#sh run
+Building configuration...
+
+Current configuration : 1184 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname ISP_R4
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Loopback 0
+ ip address 143.18.0.1 255.255.0.0
+!
+interface Loopback1
+ description Loopback 1
+ ip address 74.0.0.1 255.0.0.0
+!
+interface Loopback2
+ description Loopback 2
+ ip address 169.33.0.1 255.255.0.0
+!
+interface Loopback3
+ description Loopback 3
+ ip address 211.5.31.1 255.255.255.0
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Serial0/1/0
+ description SERIAL CONNECTION R4 TO R3
+ ip address 211.13.87.1 255.255.255.252
+ clock rate 2000000
+!
+interface Serial0/1/1
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip classless
+ip route 131.67.0.0 255.255.128.0 211.13.87.2 
+!
+ip flow-export version 9
+!
+!
+!
+banner motd ^C^C
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+
+ISP_R4#
