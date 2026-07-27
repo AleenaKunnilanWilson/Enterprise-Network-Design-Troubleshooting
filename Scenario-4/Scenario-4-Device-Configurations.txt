@@ -764,3 +764,44 @@ end
 
 
 ISP_R4#
+
+
+=========================================
+Verification Commands
+=========================================
+
+Latur_R1
+
+show ip protocols
+show ip ospf neighbor
+show ip route
+show access-lists
+show ip interface brief
+
+-----------------------------------------
+
+Udgir_R2
+
+show ip protocols
+show ip ospf neighbor
+show ip route
+show access-lists
+show ip interface brief
+
+-----------------------------------------
+
+Barshi_R3
+
+show ip protocols
+show ip ospf neighbor
+show ip route
+show ip interface brief
+
+-----------------------------------------
+
+ISP_R4
+
+show ip protocols
+show ip ospf neighbor
+show ip route
+show ip interface brief
