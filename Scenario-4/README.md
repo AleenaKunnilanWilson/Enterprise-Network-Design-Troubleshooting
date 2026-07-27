@@ -68,3 +68,16 @@ Access Control Lists (ACLs) were configured to secure access to external resourc
 - ✅ [ACL Connectivity Verification](Scenario-4-ACL-Connectivity-Verification.png)
 - ⚙️ [Device Configurations](Scenario-4-Device-Configurations.txt)
 - 💻 [Packet Tracer Project](scenario4P.pkt)
+
+
+### Scenario 4-D (Distinction)
+
+- 🌐 [Multi-Area OSPF Configuration](Scenario-4-Multi-Area-OSPF-Configuration.png)
+- 🤝 [OSPF Neighbours](Scenario-4-OSPF-Neighbours.png)
+- 🛣️ [Routing Table](Scenario-4-Multi-Area-Routing-Table.png)
+- 🔄 [LAN Failure Recovery](Scenario-4-LAN-Failure-Recovery.png)
+- ✅ [LAN Recovery Verification](Scenario-4-LAN-Recovery-Completed.png)
+- 🔄 [Serial Link Failure Recovery](Scenario-4-Serial-Link-Failure-Routing.png)
+- ✅ [Serial Link Recovery Verification](Scenario-4-Serial-Link-Recovery-Routing.png)
+- ⚙️ [Device Configurations](Scenario-4-Device-Configurations.txt)
+- 💻 [Packet Tracer Project](scenario4D.pkt)
