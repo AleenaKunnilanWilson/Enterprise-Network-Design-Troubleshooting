@@ -67,4 +67,4 @@ Access Control Lists (ACLs) were configured to secure access to external resourc
 - 🔒 [ACL Configuration - Udgir_R2](Scenario-4-ACL-Configuration-Udgir_R2.png)
 - ✅ [ACL Connectivity Verification](Scenario-4-ACL-Connectivity-Verification.png)
 - ⚙️ [Device Configurations](Scenario-4-Device-Configurations.txt)
-- 💻 [Packet Tracer Project](Scenario4P.pkt)
+- 💻 [Packet Tracer Project](Scenario4-P.pkt)
