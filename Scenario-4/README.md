@@ -57,14 +57,14 @@ Access Control Lists (ACLs) were configured to secure access to external resourc
 
 ## 📁 Supporting Files
 
-- 🗺️ Network Diagram
-- 📄 IP Addressing
-- 🌐 OSPF Configuration
-- 🌍 Multi-Area OSPF Configuration
-- 🤝 OSPF Neighbours
-- 🛣️ Routing Table
-- 🔒 ACL Configuration
-- ✅ ACL Verification
-- 📡 Connectivity Test
-- ⚙️ Device Configurations
-- 💻 Packet Tracer Project
+### Scenario 4-P (Pass)
+
+- 🗺️ [Network Diagram](Scenario-4-Network-Diagram.png)
+- 📄 [IP Addressing](Scenario-4-IP-Addressing.png)
+- 🌐 [OSPF Configuration](Scenario-4-OSPF-Configuration.png)
+- 🛣️ [Routing Table](Scenario-4-Routing-Table.png)
+- 🔒 [ACL Configuration - Latur_R1](Scenario-4-ACL-Configuration-Latur_R1.png)
+- 🔒 [ACL Configuration - Udgir_R2](Scenario-4-ACL-Configuration-Udgir_R2.png)
+- ✅ [ACL Connectivity Verification](Scenario-4-ACL-Connectivity-Verification.png)
+- ⚙️ [Device Configurations](Scenario-4-Device-Configurations.txt)
+- 💻 [Packet Tracer Project](Scenario4P.pkt)
