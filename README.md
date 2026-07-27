@@ -1,8 +1,8 @@
 # 🌐 Enterprise Network Design & Troubleshooting
 
-Welcome! This repository is a walkthrough of six enterprise networking scenarios completed using Cisco Packet Tracer. Each scenario demonstrates the process of designing, configuring, verifying, and troubleshooting a network based on real-world style requirements.
+This repository showcases six enterprise networking scenarios completed using Cisco Packet Tracer. Each scenario demonstrates the practical implementation of enterprise networking technologies, including network design, IP addressing, routing, switching, security, and troubleshooting.
 
-The scenarios combine multiple networking technologies to build complete end-to-end solutions, demonstrating practical networking concepts and enterprise network implementation.
+The scenarios progressively build real-world networking skills by covering enterprise network deployment, dynamic routing protocols, access control, network services, and connectivity verification through hands-on configuration and testing.
 
 ---
 
@@ -47,12 +47,14 @@ Each scenario includes:
 ## 💡 Skills Demonstrated
 
 - Enterprise Network Design
-- IP Address Planning
-- Routing & Switching
-- Network Configuration
-- Network Security
-- Configuration Verification
+- IP Addressing & Subnetting
+- VLAN & Inter-VLAN Routing
+- Dynamic Routing (RIPv2, EIGRP, OSPF)
+- Network Security (ACLs)
+- DHCP, NAT & PAT Configuration
+- WAN Technologies (PPP & CHAP)
 - Network Troubleshooting
+- Configuration Verification
 - Technical Documentation
 
 ---
@@ -74,7 +76,9 @@ Enterprise-Network-Design-Troubleshooting
 
 ## 🚀 About This Repository
 
-Each scenario focuses on solving a complete networking problem—from understanding the requirements and designing the network to configuring devices, verifying connectivity, and troubleshooting issues. Together, these scenarios demonstrate how multiple networking technologies work together to build and maintain enterprise networks.
+This repository contains six enterprise networking scenarios completed using Cisco Packet Tracer. Each scenario demonstrates the complete process of designing, configuring, verifying, and troubleshooting enterprise networks based on real-world networking requirements.
+
+Together, these scenarios showcase practical experience with enterprise network design, routing, switching, security, network services, and troubleshooting through hands-on implementation.
 
 ## 📖 Scenario Walkthrough
 
@@ -82,9 +86,9 @@ Explore each networking scenario below:
 
 | Scenario | Description |
 |----------|-------------|
-| 🌐 [Scenario 1](./Scenario-1) | Enterprise network design and IP address planning |
-| 🌐 [Scenario 2](./Scenario-2) | Routing, switching, and network services |
-| 🌐 [Scenario 3](./Scenario-3) | Dynamic routing and enterprise connectivity |
-| 🌐 [Scenario 4](./Scenario-4) | Network security and access control |
-| 🌐 [Scenario 5](./Scenario-5) | Enterprise network implementation |
-| 🌐 [Scenario 6](./Scenario-6) | Complete network configuration and troubleshooting |
+| 🌐 [Scenario 1](./Scenario-1) | VLAN implementation, IP addressing, and RIPv2 routing |
+| 🌐 [Scenario 2](./Scenario-2) | Secure enterprise routing with Access Control Lists (ACLs) |
+| 🌐 [Scenario 3](./Scenario-3) | Enterprise connectivity using EIGRP dynamic routing |
+| 🌐 [Scenario 4](./Scenario-4) | Advanced OSPF routing and network fault tolerance |
+| 🌐 [Scenario 5](./Scenario-5) | DHCP, NAT, and PAT for enterprise network services |
+| 🌐 [Scenario 6](./Scenario-6) | WAN connectivity with PPP/CHAP and end-to-end network deployment |
