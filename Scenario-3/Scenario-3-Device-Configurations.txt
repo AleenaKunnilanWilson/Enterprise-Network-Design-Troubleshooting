@@ -1,0 +1,791 @@
+=========================================
+VLAN Configuration - Kunri_S3
+=========================================
+
+vlan 677
+name Peas
+vlan 112
+name Rice
+exit
+int vlan 1
+description Interface vlan 1 for Kunri
+ip address 131.67.3.66 255.255.255.224
+ip default-gateway 131.67.3.65
+exit
+
+
+=========================================
+Kunri_S3 (Switch)
+=========================================
+
+Kunri_S3#sh run
+Building configuration...
+
+Current configuration : 2112 bytes
+!
+version 16.3.2
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Kunri_S3
+!
+!
+enable password cisco
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet1/0/1
+!
+interface GigabitEthernet1/0/2
+!
+interface GigabitEthernet1/0/3
+!
+interface GigabitEthernet1/0/4
+!
+interface GigabitEthernet1/0/5
+!
+interface GigabitEthernet1/0/6
+!
+interface GigabitEthernet1/0/7
+!
+interface GigabitEthernet1/0/8
+!
+interface GigabitEthernet1/0/9
+!
+interface GigabitEthernet1/0/10
+!
+interface GigabitEthernet1/0/11
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/12
+!
+interface GigabitEthernet1/0/13
+ description Access-VLAN 677
+ switchport access vlan 677
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security maximum 4
+ switchport port-security mac-address sticky 
+ switchport port-security violation protect 
+ switchport port-security mac-address sticky 00D0.D37A.B152
+!
+interface GigabitEthernet1/0/14
+ description Access-VLAN 677
+ switchport access vlan 677
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security maximum 4
+ switchport port-security mac-address sticky 
+ switchport port-security violation protect 
+!
+interface GigabitEthernet1/0/15
+!
+interface GigabitEthernet1/0/16
+!
+interface GigabitEthernet1/0/17
+!
+interface GigabitEthernet1/0/18
+!
+interface GigabitEthernet1/0/19
+!
+interface GigabitEthernet1/0/20
+!
+interface GigabitEthernet1/0/21
+!
+interface GigabitEthernet1/0/22
+!
+interface GigabitEthernet1/0/23
+!
+interface GigabitEthernet1/0/24
+!
+interface GigabitEthernet1/1/1
+!
+interface GigabitEthernet1/1/2
+!
+interface GigabitEthernet1/1/3
+!
+interface GigabitEthernet1/1/4
+!
+interface Vlan1
+ ip address 131.67.3.66 255.255.255.224
+!
+ip default-gateway 131.67.3.65
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+banner motd ^C^C
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+!
+line aux 0
+!
+line vty 0 4
+ password cisco
+ login
+ transport input telnet
+!
+!
+!
+!
+end
+
+
+Kunri_S3#
+
+
+=========================================
+VLAN Configuration - Mithi_S2
+=========================================
+
+vlan 58
+name Flour
+exit
+int vlan 1
+description Interface vlan 1 for Mithi
+ip address 131.67.3.130 255.255.255.248
+ip default-gateway 131.67.3.129
+exit
+
+
+=========================================
+Mithi_S2 (Switch)
+=========================================
+
+Mithi_S2#sh run
+Building configuration...
+
+Current configuration : 1424 bytes
+!
+version 15.0
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Mithi_S2
+!
+enable password cisco
+!
+!
+!
+no ip domain-lookup
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+!
+interface FastEthernet0/2
+!
+interface FastEthernet0/3
+!
+interface FastEthernet0/4
+!
+interface FastEthernet0/5
+!
+interface FastEthernet0/6
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface FastEthernet0/13
+!
+interface FastEthernet0/14
+!
+interface FastEthernet0/15
+!
+interface FastEthernet0/16
+!
+interface FastEthernet0/17
+!
+interface FastEthernet0/18
+!
+interface FastEthernet0/19
+!
+interface FastEthernet0/20
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+!
+interface FastEthernet0/23
+!
+interface FastEthernet0/24
+ description Access-VLAN58
+ switchport access vlan 58
+ switchport mode access
+ switchport port-security
+ switchport port-security violation protect 
+!
+interface GigabitEthernet0/1
+ switchport mode trunk
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ ip address 131.67.3.130 255.255.255.248
+!
+ip default-gateway 131.67.3.129
+!
+banner motd ^C^C
+!
+!
+!
+line con 0
+ logging synchronous
+!
+line vty 0 4
+ password cisco
+ login
+ transport input telnet
+line vty 5 15
+ login
+!
+!
+!
+!
+end
+
+
+Mithi_S2#
+
+
+=========================================
+Kunri_R1 (Router)
+=========================================
+
+Kunri_R1#sh run
+Building configuration...
+
+Current configuration : 1828 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Kunri_R1
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/1.1
+ description Interface for management vlan 1
+ encapsulation dot1Q 1 native
+ ip address 131.67.3.65 255.255.255.224
+!
+interface GigabitEthernet0/0/1.112
+ description Interface for vlan 112
+ encapsulation dot1Q 112
+ ip address 131.67.3.1 255.255.255.192
+!
+interface GigabitEthernet0/0/1.677
+ description Interface for vlan 677
+ encapsulation dot1Q 677
+ ip address 131.67.0.1 255.255.254.0
+ ip access-group ACL_HTTP in
+!
+interface Serial0/1/0
+ description SERIAL CONNECTION R1 TO R2
+ bandwidth 128
+ ip address 131.67.3.137 255.255.255.252
+!
+interface Serial0/1/1
+ description SERIAL CONNECTION R1 TO R3
+ bandwidth 64
+ ip address 131.67.3.145 255.255.255.252
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router eigrp 65
+ passive-interface default
+ no passive-interface Serial0/1/0
+ no passive-interface Serial0/1/1
+ network 131.67.3.136 0.0.0.3
+ network 131.67.3.144 0.0.0.3
+ network 131.67.0.0 0.0.1.255
+ network 131.67.3.0 0.0.0.63
+ network 131.67.3.64 0.0.0.31
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+ip access-list standard TELNET_R1
+ permit 131.67.0.0 0.0.1.255
+ deny any
+ip access-list extended ACLVLAN677
+ permit tcp 131.67.0.0 0.0.1.255 143.18.0.0 0.0.255.255 eq www
+ deny ip 131.67.0.0 0.0.1.255 143.18.0.0 0.0.255.255
+ permit ip 131.67.0.0 0.0.1.255 any
+!
+banner motd ^C^C
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ access-class TELNET_R1 in
+ password cisco
+ login
+!
+!
+!
+end
+
+
+Kunri_R1#
+
+
+
+=========================================
+Mithi_R2 (Router)
+=========================================
+
+Mithi_R2#sh run
+Building configuration...
+
+Current configuration : 1338 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Mithi_R2
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/1.1
+ description Interface for vlan 1
+ encapsulation dot1Q 1 native
+ ip address 131.67.3.129 255.255.255.248
+!
+interface GigabitEthernet0/0/1.58
+ description Interface for vlan 58
+ encapsulation dot1Q 58
+ ip address 131.67.2.1 255.255.255.0
+!
+interface Serial0/1/0
+ description SERIAL CONNECTION R2 TO R1
+ bandwidth 128
+ ip address 131.67.3.138 255.255.255.252
+ clock rate 2000000
+!
+interface Serial0/1/1
+ description SERIAL CONNECTION R2 TO R3
+ bandwidth 512
+ ip address 131.67.3.141 255.255.255.252
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router eigrp 65
+ passive-interface default
+ no passive-interface Serial0/1/0
+ no passive-interface Serial0/1/1
+ network 131.67.3.136 0.0.0.3
+ network 131.67.3.140 0.0.0.3
+ network 131.67.2.0 0.0.0.255
+ network 131.67.3.128 0.0.0.7
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+banner motd ^C^C
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+
+Mithi_R2#
+
+
+=========================================
+Badin_R3 (Router)
+=========================================
+
+
+Badin_R3#sh run
+Building configuration...
+
+Current configuration : 1450 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Badin_R3
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Loopback 0
+ ip address 131.67.3.97 255.255.255.224
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Serial0/1/0
+ description SERIAL CONNECTION R3 TO R1
+ bandwidth 64
+ ip address 131.67.3.146 255.255.255.252
+ clock rate 2000000
+!
+interface Serial0/1/1
+ description SERIAL CONNECTION R3 TO R2
+ bandwidth 512
+ ip address 131.67.3.142 255.255.255.252
+ clock rate 2000000
+!
+interface Serial0/2/0
+ description SERIAL CONNECTION R3 TO R4
+ ip address 211.13.87.2 255.255.255.252
+!
+interface Serial0/2/1
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router eigrp 65
+ redistribute static 
+ network 131.67.3.144 0.0.0.3
+ network 131.67.3.140 0.0.0.3
+ network 131.67.3.96 0.0.0.31
+!
+ip classless
+ip route 0.0.0.0 0.0.0.0 211.13.87.1 
+!
+ip flow-export version 9
+!
+!
+ip access-list standard TELNET_DENY
+ deny 131.67.0.0 0.0.1.255
+ permit any
+!
+banner motd ^C^C
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+!
+line aux 0
+!
+line vty 0 4
+ access-class TELNET_DENY in
+ password cisco
+ login
+!
+!
+!
+end
+
+
+Badin_R3#
+
+
+
+=========================================
+ISP_R4 (Router)
+=========================================
+
+
+ISP_R4#sh run
+Building configuration...
+
+Current configuration : 1184 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname ISP_R4
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Loopback 0
+ ip address 143.18.0.1 255.255.0.0
+!
+interface Loopback1
+ description Loopback 1
+ ip address 74.0.0.1 255.0.0.0
+!
+interface Loopback2
+ description Loopback 2
+ ip address 169.33.0.1 255.255.0.0
+!
+interface Loopback3
+ description Loopback 3
+ ip address 211.5.31.1 255.255.255.0
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Serial0/1/0
+ description SERIAL CONNECTION R4 TO R3
+ ip address 211.13.87.1 255.255.255.252
+ clock rate 2000000
+!
+interface Serial0/1/1
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip classless
+ip route 131.67.0.0 255.255.128.0 211.13.87.2 
+!
+ip flow-export version 9
+!
+!
+!
+banner motd ^C^C
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+
+ISP_R4#
