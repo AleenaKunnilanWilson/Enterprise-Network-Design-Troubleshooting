@@ -65,21 +65,21 @@ Key technologies implemented include:
 - 🌐 [Daspur_R2 OSPF Configuration](Scenario-6-Daspur_R2-OSPF-Configuration.png)
 - 🛣️ [Daspur_R2 Routing Table](Scenario-6-Daspur_R2-Routing-Table.png)
 - 🌐 [DHCP Configuration](Scenario-6-DHCP-Configuration.png)
+- 📋 [DHCP Address Allocation - PC0](Scenario-6-DHCP-Address-Allocation-PC0.png)
 - 📋 [DHCP Address Allocation - PC1](Scenario-6-DHCP-Address-Allocation-PC1.png)
-- 📋 [DHCP Address Allocation - PC2](Scenario-6-DHCP-Address-Allocation-PC2.png)
 - 🌍 [NAT Configuration](Scenario-6-NAT-Configuration.png)
 - 📋 [NAT Translation Table](Scenario-6-NAT-Translation-Table.png)
-- ✅ [Internet Connectivity Verification](Scenario-6-Internet-Connectivity-Verification.png)
+- 🌐 [Internet Connectivity Verification](Scenario-6-Internet-Connectivity-Verification.png)
 
 ### Scenario 6-C (Credit)
 
-- 🔗 [PPP Configuration](Scenario-6-PPP-Configuration.png)
-- 🔐 [CHAP Configuration](Scenario-6-CHAP-Configuration.png)
-- 📡 [PPP Interface Status](Scenario-6-PPP-Interface-Status.png)
+- 🔐 [Nagri_R1 CHAP Configuration](Scenario-6-Nagri_R1-CHAP-Configuration.png)
+- 🔐 [Daspur_R2 CHAP Configuration](Scenario-6-Daspur_R2-CHAP-Configuration.png)
+- 📡 [Nagri_R1 PPP Interface Status](Scenario-6-Nagri_R1-PPP-Interface-Status.png)
+- 📡 [Daspur_R2 PPP Interface Status](Scenario-6-Daspur_R2-PPP-Interface-Status.png)
 - ✅ [PPP and CHAP Connectivity Verification](Scenario-6-PPP-CHAP-Connectivity-Verification.png)
 
 ### Implementation Files
 
 - ⚙️ [Device Configurations](Scenario-6-Device-Configurations.txt)
 - 💻 [Packet Tracer Project](6C.pkt)
-
