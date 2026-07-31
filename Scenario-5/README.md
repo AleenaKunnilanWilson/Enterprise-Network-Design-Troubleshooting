@@ -76,18 +76,20 @@ Key technologies implemented include:
 ### Scenario 5-C (Credit)
 
 - 🌐 [DHCP Configuration](Scenario-5-DHCP-Configuration.png)
-- 📋 [DHCP Address Allocation](Scenario-5-DHCP-Address-Allocation.png)
-- ✅ [DHCP Verification](Scenario-5-DHCP-Verification.png)
+- 📋 [DHCP Address Allocation - PC1](Scenario-5-DHCP-Address-Allocation-PC1.png)
+- 📋 [DHCP Address Allocation - PC2](Scenario-5-DHCP-Address-Allocation-PC2.png)
+- ✅ [PC1 to PC2 Connectivity Verification](Scenario-5-PC1-to-PC2-Connectivity-Verification.png)
+- ✅ [PC2 to PC1 Connectivity Verification](Scenario-5-PC2-to-PC1-Connectivity-Verification.png)
 
 ### Scenario 5-D (Distinction)
 
 - 🌍 [NAT Configuration](Scenario-5-NAT-Configuration.png)
 - 🔄 [PAT Configuration](Scenario-5-PAT-Configuration.png)
-- 📋 [NAT Translation Table](Scenario-5-NAT-Translations.png)
+- 📋 [NAT Translation Table](Scenario-5-NAT-Translation-Table.png)
 - 📊 [NAT Statistics](Scenario-5-NAT-Statistics.png)
-- 🌐 [Internet Connectivity Verification](Scenario-5-Internet-Connectivity.png)
+- 🌐 [Internet Connectivity Verification](Scenario-5-Internet-Connectivity-Verification.png)
 
 ### Implementation Files
 
-- ⚙️ Device Configurations
-- 💻 Packet Tracer Project
+- ⚙️ [Device Configurations](Scenario-5-Device-Configurations.txt)
+- 💻 [Packet Tracer Project](5C.pkt)
