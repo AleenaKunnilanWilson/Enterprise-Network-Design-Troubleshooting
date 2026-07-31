@@ -1,0 +1,617 @@
+=========================================
+VLAN Configuration - Korba_S3
+=========================================
+
+Korba_S3(config)#vlan 195
+Korba_S3(config-vlan)#name Grey
+Korba_S3(config-vlan)#exit
+
+Korba_S3(config)#vlan 586
+Korba_S3(config-vlan)#name Green
+Korba_S3(config-vlan)#exit
+
+Korba_S3(config)#vlan 867
+Korba_S3(config-vlan)#name Blue
+Korba_S3(config-vlan)#exit
+
+
+
+=========================================
+Korba_S3 (Switch)
+=========================================
+
+
+Korba_S3#sh run
+Building configuration...
+
+Current configuration : 2309 bytes
+!
+version 16.3.2
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Korba_S3
+!
+!
+enable password cisco
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet1/0/1
+!
+interface GigabitEthernet1/0/2
+!
+interface GigabitEthernet1/0/3
+!
+interface GigabitEthernet1/0/4
+!
+interface GigabitEthernet1/0/5
+!
+interface GigabitEthernet1/0/6
+!
+interface GigabitEthernet1/0/7
+!
+interface GigabitEthernet1/0/8
+!
+interface GigabitEthernet1/0/9
+!
+interface GigabitEthernet1/0/10
+!
+interface GigabitEthernet1/0/11
+ description TRUNK TO R1
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/12
+!
+interface GigabitEthernet1/0/13
+ description ACCESSPORTS ON VLAN586
+ switchport access vlan 586
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security maximum 4
+ switchport port-security mac-address sticky 
+ switchport port-security violation protect 
+ switchport port-security mac-address sticky 0060.70CD.64C4
+!
+interface GigabitEthernet1/0/14
+ description ACCESSPORTS ON VLAN586
+ switchport access vlan 586
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security maximum 4
+ switchport port-security mac-address sticky 
+ switchport port-security violation protect 
+!
+interface GigabitEthernet1/0/15
+!
+interface GigabitEthernet1/0/16
+!
+interface GigabitEthernet1/0/17
+!
+interface GigabitEthernet1/0/18
+!
+interface GigabitEthernet1/0/19
+!
+interface GigabitEthernet1/0/20
+!
+interface GigabitEthernet1/0/21
+!
+interface GigabitEthernet1/0/22
+!
+interface GigabitEthernet1/0/23
+!
+interface GigabitEthernet1/0/24
+ description ACCESSPORTS ON VLAN867
+ switchport access vlan 867
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/1/1
+!
+interface GigabitEthernet1/1/2
+!
+interface GigabitEthernet1/1/3
+!
+interface GigabitEthernet1/1/4
+!
+interface Vlan1
+ description Interface vlan for management vlan 1
+ ip address 85.0.9.66 255.255.255.240
+!
+ip default-gateway 85.0.9.65
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+banner motd ^C^C
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+!
+line aux 0
+!
+line vty 0 4
+ password cisco
+ login
+ transport input telnet
+!
+!
+!
+!
+end
+
+
+Korba_S3#
+
+
+
+=========================================
+Korba_R1 (Router)
+=========================================
+
+Korba_R1#sh run
+Building configuration...
+
+Current configuration : 2367 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Korba_R1
+!
+!
+!
+!
+ip dhcp excluded-address 85.0.0.1 85.0.0.3
+ip dhcp excluded-address 85.0.9.33 85.0.9.35
+!
+ip dhcp pool VLANGreen
+ network 85.0.0.0 255.255.248.0
+ default-router 85.0.0.1
+ip dhcp pool VLANBlue
+ network 85.0.9.32 255.255.255.224
+ default-router 85.0.9.33
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/1.1
+ description SUBINTERFACE FOR VLAN 1
+ encapsulation dot1Q 1 native
+ ip address 85.0.9.65 255.255.255.240
+!
+interface GigabitEthernet0/0/1.195
+ description SUBINTERFACE FOR VLAN 195
+ encapsulation dot1Q 195
+ ip address 85.0.8.1 255.255.255.0
+!
+interface GigabitEthernet0/0/1.586
+ description SUBINTERFACE FOR VLAN 586
+ encapsulation dot1Q 586
+ ip address 85.0.0.1 255.255.248.0
+ ip access-group ACLVLAN586 in
+!
+interface GigabitEthernet0/0/1.867
+ description SUBINTERFACE FOR VLAN 867
+ encapsulation dot1Q 867
+ ip address 85.0.9.33 255.255.255.224
+!
+interface Serial0/1/0
+ description SERIAL CONNECTION TO R2
+ ip address 85.0.9.81 255.255.255.252
+!
+interface Serial0/1/1
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router ospf 1
+ log-adjacency-changes
+ passive-interface default
+ no passive-interface Serial0/1/0
+ network 85.0.9.80 0.0.0.3 area 0
+ network 85.0.9.64 0.0.0.15 area 0
+ network 85.0.0.0 0.0.7.255 area 0
+ network 85.0.8.0 0.0.0.255 area 0
+ network 85.0.9.32 0.0.0.31 area 0
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+ip access-list extended ACLVLAN586
+ permit tcp 85.0.0.0 0.0.7.255 148.33.0.0 0.0.255.255 eq www
+ deny ip 148.33.0.0 0.0.255.255 any
+ permit icmp 148.33.0.0 0.0.255.255 85.0.9.32 0.0.0.31 echo-reply
+ deny icmp 148.33.0.0 0.0.255.255 85.0.9.32 0.0.0.31 echo
+ permit ip 148.33.0.0 0.0.255.255 any
+ permit ip any any
+ip access-list standard TELNETACL586
+ permit 148.33.0.0 0.0.255.255
+ deny any
+ deny 148.33.0.0 0.0.255.255
+ permit any
+!
+banner motd ^C^C
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+!
+line aux 0
+!
+line vty 0 4
+ access-class TELNETACL586 in
+ password cisco
+ login
+!
+!
+!
+end
+
+
+Korba_R1#
+
+
+
+=========================================
+Raipur_R2 (Gateway Router)
+=========================================
+
+Raipur_R2#sh run
+Building configuration...
+
+Current configuration : 1951 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Raipur_R2
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Loopback 0
+ ip address 85.0.9.1 255.255.255.224
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Serial0/1/0
+ description SERIAL CONNECTION TO R1
+ bandwidth 512
+ ip address 85.0.9.82 255.255.255.252
+ ip nat inside
+ clock rate 2000000
+!
+interface Serial0/1/1
+ description SERIAL CONNECTION TO R3_ISP
+ ip address 201.45.37.1 255.255.255.252
+ ip nat outside
+!
+interface Serial0/2/0
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Serial0/2/1
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router ospf 1
+ log-adjacency-changes
+ passive-interface Loopback0
+ network 85.0.9.80 0.0.0.3 area 0
+ network 85.0.9.0 0.0.0.31 area 0
+ default-information originate
+!
+ip nat pool POOL_VLAN1 141.12.2.1 141.12.2.85 netmask 255.255.255.0
+ip nat pool POOL_VLAN586 141.12.2.86 141.12.2.170 netmask 255.255.255.0
+ip nat pool POOL_VLAN867 141.12.2.171 141.12.2.254 netmask 255.255.255.0
+ip nat inside source list natacl_vlan1 pool POOL_VLAN1 overload
+ip nat inside source list natacl_vlan586 pool POOL_VLAN586 overload
+ip nat inside source list natacl_vlan867 pool POOL_VLAN867 overload
+ip classless
+ip route 0.0.0.0 0.0.0.0 201.45.37.2 
+!
+ip flow-export version 9
+!
+!
+ip access-list extended natacl_vlan1
+ permit ip 85.0.9.64 0.0.0.15 any
+ip access-list extended natacl_vlan586
+ permit ip 85.0.0.0 0.0.7.255 any
+ip access-list extended natacl_vlan867
+ permit ip 85.0.9.32 0.0.0.31 any
+!
+banner motd ^C^C
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+
+Raipur_R2# 
+
+
+
+=========================================
+ISP_R3 (Router)
+=========================================
+
+ISP_R3#sh run
+Building configuration...
+
+Current configuration : 1185 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname ISP_R3
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Loopback0
+ ip address 148.33.0.1 255.255.0.0
+!
+interface Loopback1
+ description Loopback1
+ ip address 81.0.0.1 255.0.0.0
+!
+interface Loopback2
+ description Loopback2
+ ip address 171.90.0.1 255.255.0.0
+!
+interface Loopback3
+ description Loopback3
+ ip address 201.2.44.1 255.255.255.0
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Serial0/1/0
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Serial0/1/1
+ description SERIAL CONNECTION TO R2_Gateway
+ ip address 201.45.37.2 255.255.255.252
+ clock rate 2000000
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip classless
+ip route 141.12.2.0 255.255.255.0 201.45.37.1 
+!
+ip flow-export version 9
+!
+!
+!
+banner motd ^C^C
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+
+ISP_R3#
+
+
+=========================================
+Verification - Korba_R1
+=========================================
+
+show ip interface brief
+show ip protocols
+show ip route
+show access-lists
+show ip dhcp binding
+show ip dhcp pool
+
+
+
+=========================================
+Verification - Raipur_R2
+=========================================
+
+show ip interface brief
+show ip protocols
+show ip route
+show ip nat translations
+show ip nat statistics
+
+
+=========================================
+Verification - ISP_R3
+=========================================
+
+show ip interface brief
+show ip route
+
