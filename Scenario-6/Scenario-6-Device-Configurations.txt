@@ -1,0 +1,1128 @@
+=========================================
+VLAN Configuration - Nagri_S3
+=========================================
+
+Nagri_S3(config)#vlan 516
+Nagri_S3(config-vlan)#name Birds
+Nagri_S3(config-vlan)#exit
+
+Nagri_S3(config)#vlan 586
+Nagri_S3(config-vlan)#name Dogs
+Nagri_S3(config-vlan)#exit
+
+Nagri_S3(config)#vlan 867
+Nagri_S3(config-vlan)#name Cats
+Nagri_S3(config-vlan)#exit
+
+
+
+
+=========================================
+Nagri_S3 (Switch)
+=========================================
+
+
+Nagri_S3#sh run
+Building configuration...
+
+Current configuration : 5499 bytes
+!
+! Last configuration change at 17:02:08 UTC Fri Oct 24 2025
+!
+version 16.6
+no service pad
+no service timestamps debug uptime
+no service timestamps log uptime
+no platform punt-keepalive disable-kernel-core
+!
+hostname Nagri_S3
+!
+!
+vrf definition Mgmt-vrf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+enable password cisco
+!
+no aaa new-model
+switch 1 provision ws-c3650-24ts
+!
+!
+!
+!
+!
+no ip domain lookup
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+cpp system-default
+!
+!
+!
+diagnostic bootup level minimal
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+!
+redundancy
+ mode sso
+!
+!
+!
+class-map match-any system-cpp-police-topology-control
+  description Topology control
+class-map match-any system-cpp-police-sw-forward
+  description Sw forwarding, L2 LVX data, LOGGING
+class-map match-any system-cpp-default
+  description DHCP Snooping, EWLC control, EWCL data
+class-map match-any system-cpp-police-sys-data
+  description Learning cache ovfl, Crypto Control, Exception, EGR Exception, NFL SAMPLED DATA, Gold Pkt, RPF Failed
+class-map match-any system-cpp-police-punt-webauth
+  description Punt Webauth
+class-map match-any system-cpp-police-l2lvx-control
+  description L2 LVX control packets
+class-map match-any system-cpp-police-forus
+  description Forus Address resolution and Forus traffic
+class-map match-any system-cpp-police-multicast-end-station
+  description MCAST END STATION
+class-map match-any system-cpp-police-multicast
+  description Transit Traffic and MCAST Data
+class-map match-any system-cpp-police-l2-control
+  description L2 control
+class-map match-any system-cpp-police-dot1x-auth
+  description DOT1X Auth
+class-map match-any system-cpp-police-data
+  description ICMP redirect, ICMP_GEN and BROADCAST
+class-map match-any system-cpp-police-stackwise-virt-control
+  description Stackwise Virtual
+class-map match-any system-cpp-police-control-low-priority
+  description General punt
+class-map match-any non-client-nrt-class
+class-map match-any system-cpp-police-routing-control
+  description Routing control
+class-map match-any system-cpp-police-protocol-snooping
+  description Protocol snooping
+!
+policy-map system-cpp-policy
+ class system-cpp-police-data
+  police rate 600 pps
+ class system-cpp-police-sys-data
+  police rate 100 pps
+ class system-cpp-police-sw-forward
+  police rate 1000 pps
+ class system-cpp-police-multicast
+  police rate 500 pps
+ class system-cpp-police-multicast-end-station
+  police rate 2000 pps
+ class system-cpp-police-punt-webauth
+  police rate 1000 pps
+ class system-cpp-police-l2-control
+  police rate 2000 pps
+ class system-cpp-police-stackwise-virt-control
+  police rate 8000 pps
+ class system-cpp-police-routing-control
+  police rate 5400 pps
+ class system-cpp-police-control-low-priority
+  police rate 200 pps
+ class system-cpp-police-l2lvx-control
+  police rate 1000 pps
+ class system-cpp-police-topology-control
+  police rate 13000 pps
+ class system-cpp-police-dot1x-auth
+  police rate 1000 pps
+ class system-cpp-police-protocol-snooping
+  police rate 2000 pps
+ class system-cpp-police-forus
+  police rate 1000 pps
+ class system-cpp-default
+  police rate 1000 pps
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ vrf forwarding Mgmt-vrf
+ no ip address
+ speed 1000
+ negotiation auto
+!
+interface GigabitEthernet1/0/1
+!
+interface GigabitEthernet1/0/2
+!
+interface GigabitEthernet1/0/3
+!
+interface GigabitEthernet1/0/4
+!
+interface GigabitEthernet1/0/5
+!
+interface GigabitEthernet1/0/6
+!
+interface GigabitEthernet1/0/7
+!
+interface GigabitEthernet1/0/8
+!
+interface GigabitEthernet1/0/9
+!
+interface GigabitEthernet1/0/10
+!
+interface GigabitEthernet1/0/11
+ description TRUNK TO R1
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/12
+!
+interface GigabitEthernet1/0/13
+ description ACCESSVLAN586
+ switchport access vlan 586
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 4
+ switchport port-security violation protect
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 000c.29c4.7ea8
+ switchport port-security mac-address sticky 0090.214b.a331
+ switchport port-security
+!
+interface GigabitEthernet1/0/14
+ description ACCESSVLAN586
+ switchport access vlan 586
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 4
+ switchport port-security violation protect
+ switchport port-security mac-address sticky
+ switchport port-security
+!
+interface GigabitEthernet1/0/15
+!
+interface GigabitEthernet1/0/16
+!
+interface GigabitEthernet1/0/17
+!
+interface GigabitEthernet1/0/18
+!
+interface GigabitEthernet1/0/19
+!
+interface GigabitEthernet1/0/20
+!
+interface GigabitEthernet1/0/21
+!
+interface GigabitEthernet1/0/22
+!
+interface GigabitEthernet1/0/23
+!
+interface GigabitEthernet1/0/24
+ description ACCESSVLAN_867
+ switchport access vlan 867
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/1/1
+!
+interface GigabitEthernet1/1/2
+!
+interface GigabitEthernet1/1/3
+!
+interface GigabitEthernet1/1/4
+!
+interface Vlan1
+ description INTERFACE VLAN 1
+ ip address 85.0.5.162 255.255.255.248
+!
+ip default-gateway 85.0.5.161
+ip forward-protocol nd
+ip http server
+ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+ service-policy input system-cpp-policy
+!
+banner motd ^CC^C
+!
+line con 0
+ logging synchronous
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ password cisco
+ login
+ transport input telnet
+line vty 5 15
+ login
+!
+!
+wsma agent exec
+!
+wsma agent config
+!
+wsma agent filesys
+!
+wsma agent notify
+!
+!
+end
+
+Nagri_S3#
+
+
+
+=========================================
+Nagri_R1 (Router)
+=========================================
+
+Nagri_R1#sh run
+Building configuration...
+
+
+Current configuration : 3153 bytes
+!
+! Last configuration change at 17:26:14 UTC Fri Oct 24 2025
+!
+version 16.7
+no service timestamps debug uptime
+no service timestamps log uptime
+platform qfp utilization monitor load 80
+no platform punt-keepalive disable-kernel-core
+!
+hostname Nagri_R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+!
+!
+!
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+license udi pid ISR4321/K9 sn FDO2147093A
+license boot suite FoundationSuiteK9
+license boot level securityk9
+no license smart enable
+diagnostic bootup level minimal
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+!
+!
+username Daspur_R2 password 0 cisco
+!
+redundancy
+ mode none
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ negotiation auto
+!
+interface GigabitEthernet0/0/1.1
+ description SUBINTERFACE FOR VLAN 1
+ encapsulation dot1Q 1 native
+ ip address 85.0.5.161 255.255.255.248
+!
+interface GigabitEthernet0/0/1.516
+ description SUBINTERFACE FOR VLAN 516
+ encapsulation dot1Q 516
+ ip address 85.0.5.1 255.255.255.128
+!
+interface GigabitEthernet0/0/1.586
+ description SUBINTERFACE FOR VLAN 586
+ encapsulation dot1Q 586
+ ip address 85.0.0.1 255.255.252.0
+ ip helper-address 85.0.5.170
+ ip access-group ACLVLAN586 in
+!
+interface GigabitEthernet0/0/1.867
+ description SUBINTERFACE FOR VLAN 867
+ encapsulation dot1Q 867
+ ip address 85.0.4.1 255.255.255.0
+ ip helper-address 85.0.5.170
+ ip access-group ACLVLAN867 in
+!
+interface Serial0/1/0
+ description SERIAL CONNECTION TO R2
+ ip address 85.0.5.169 255.255.255.252
+ encapsulation ppp
+ ppp authentication chap
+!
+interface Serial0/1/1
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0
+ vrf forwarding Mgmt-intf
+ no ip address
+ shutdown
+ negotiation auto
+!
+router ospf 1
+ passive-interface default
+ no passive-interface Serial0/1/0
+ network 85.0.0.0 0.0.3.255 area 0
+ network 85.0.4.0 0.0.0.255 area 0
+ network 85.0.5.0 0.0.0.127 area 0
+ network 85.0.5.160 0.0.0.7 area 0
+ network 85.0.5.168 0.0.0.3 area 0
+!
+ip forward-protocol nd
+ip http server
+ip http authentication local
+ip http secure-server
+ip tftp source-interface GigabitEthernet0
+!
+!
+!
+ip access-list standard TELNETACL586
+ permit 85.0.0.0 0.0.3.255
+ deny   any
+!
+ip access-list extended ACLVLAN586
+ permit tcp 85.0.0.0 0.0.3.255 154.3.0.0 0.0.255.255 eq www
+ deny   ip 85.0.0.0 0.0.3.255 154.3.0.0 0.0.255.255
+ permit icmp 85.0.0.0 0.0.3.255 85.0.4.0 0.0.0.255 echo-reply
+ deny   icmp 85.0.0.0 0.0.3.255 85.0.4.0 0.0.0.255
+ permit ip any any
+ip access-list extended ACLVLAN867
+ deny   ip 85.0.4.0 0.0.0.255 85.0.5.128 0.0.0.31
+ permit ip any any
+!
+!
+!
+!
+control-plane
+!
+banner motd ^CC^C
+!
+line con 0
+ logging synchronous
+ transport input none
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ access-class TELNETACL586 in
+ password cisco
+ login
+!
+wsma agent exec
+!
+wsma agent config
+!
+wsma agent filesys
+!
+wsma agent notify
+!
+!
+end
+
+Nagri_R1#
+
+
+
+=========================================
+Daspur_R2 (Gateway Router)
+=========================================
+
+Daspur_R2#sh run
+Building configuration...
+
+
+Current configuration : 3149 bytes
+!
+! Last configuration change at 18:50:32 UTC Wed Mar 24 2021
+!
+version 16.7
+no service timestamps debug uptime
+no service timestamps log uptime
+platform qfp utilization monitor load 80
+no platform punt-keepalive disable-kernel-core
+!
+hostname Daspur_R2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+!
+no aaa new-model
+!
+no ip domain lookup
+ip dhcp excluded-address 85.0.0.1 85.0.0.4
+ip dhcp excluded-address 85.0.4.1 85.0.4.4
+!
+ip dhcp pool VLAN586Dogs
+ network 85.0.0.0 255.255.252.0
+ default-router 85.0.0.1
+!
+ip dhcp pool VLAN867Cats
+ network 85.0.4.0 255.255.255.0
+ default-router 85.0.4.1
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+!
+!
+!
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+license udi pid ISR4321/K9 sn FDO21162T8G
+license boot level securityk9
+no license smart enable
+diagnostic bootup level minimal
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+!
+!
+username Nagri_R1 password 0 cisco
+!
+redundancy
+ mode none
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description loopback 0
+ ip address 85.0.5.129 255.255.255.224
+ ip nat inside
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet0/0/1.586
+!
+interface Serial0/1/0
+ description SERIAL CONNECTION TO R1
+ bandwidth 256
+ ip address 85.0.5.170 255.255.255.252
+ ip nat inside
+ encapsulation ppp
+ ppp authentication chap
+!
+interface Serial0/1/1
+ description SERIAL CONNECTION TO R3
+ ip address 191.22.47.1 255.255.255.252
+ ip nat outside
+!
+interface GigabitEthernet0
+ vrf forwarding Mgmt-intf
+ no ip address
+ shutdown
+ negotiation auto
+!
+router ospf 1
+ passive-interface default
+ no passive-interface Serial0/1/0
+ network 85.0.5.128 0.0.0.31 area 0
+ network 85.0.5.168 0.0.0.3 area 0
+ default-information originate
+!
+ip nat pool POOL_VLAN1 135.12.64.1 135.12.64.42 netmask 255.255.255.128
+ip nat pool POOL_VLAN586 135.12.64.43 135.12.64.84 netmask 255.255.255.128
+ip nat pool POOL_VLAN867 135.12.64.85 135.12.64.126 netmask 255.255.255.128
+ip nat inside source list natacl_vlan1 pool POOL_VLAN1 overload
+ip nat inside source list natacl_vlan586 pool POOL_VLAN586 overload
+ip nat inside source list natacl_vlan867 pool POOL_VLAN867 overload
+ip forward-protocol nd
+ip http server
+ip http authentication local
+ip http secure-server
+ip tftp source-interface GigabitEthernet0
+ip route 0.0.0.0 0.0.0.0 191.22.47.2
+!
+!
+!
+ip access-list standard TELNETACL586
+ deny   85.0.0.0 0.0.3.255
+ permit any
+!
+ip access-list extended natacl_vlan1
+ permit ip 85.0.5.160 0.0.0.7 any
+ip access-list extended natacl_vlan586
+ permit ip 85.0.0.0 0.0.3.255 any
+ip access-list extended natacl_vlan867
+ permit ip 85.0.4.0 0.0.0.255 any
+!
+!
+!
+!
+control-plane
+!
+banner motd ^CC^C
+!
+line con 0
+ logging synchronous
+ transport input none
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ access-class TELNETACL586 in
+ password cisco
+ login
+!
+wsma agent exec
+!
+wsma agent config
+!
+wsma agent filesys
+!
+wsma agent notify
+!
+!
+end
+
+Daspur_R2#sh ip nat tr
+Daspur_R2#sh ip nat translations
+Total number of translations: 0
+
+Daspur_R2#sh ip nat translations
+Pro  Inside global         Inside local          Outside local         Outside global
+icmp 135.12.64.43:512      85.0.0.5:512          18.0.0.1:512          18.0.0.1:512
+Total number of translations: 1
+
+Daspur_R2#sh run
+Building configuration...
+
+
+Current configuration : 3149 bytes
+!
+! Last configuration change at 18:50:32 UTC Wed Mar 24 2021
+!
+version 16.7
+no service timestamps debug uptime
+no service timestamps log uptime
+platform qfp utilization monitor load 80
+no platform punt-keepalive disable-kernel-core
+!
+hostname Daspur_R2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+!
+no aaa new-model
+!
+no ip domain lookup
+ip dhcp excluded-address 85.0.0.1 85.0.0.4
+ip dhcp excluded-address 85.0.4.1 85.0.4.4
+!
+ip dhcp pool VLAN586Dogs
+ network 85.0.0.0 255.255.252.0
+ default-router 85.0.0.1
+!
+ip dhcp pool VLAN867Cats
+ network 85.0.4.0 255.255.255.0
+ default-router 85.0.4.1
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+!
+!
+!
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+license udi pid ISR4321/K9 sn FDO21162T8G
+license boot level securityk9
+no license smart enable
+diagnostic bootup level minimal
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+!
+!
+username Nagri_R1 password 0 cisco
+!
+redundancy
+ mode none
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description loopback 0
+ ip address 85.0.5.129 255.255.255.224
+ ip nat inside
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet0/0/1.586
+!
+interface Serial0/1/0
+ description SERIAL CONNECTION TO R1
+ bandwidth 256
+ ip address 85.0.5.170 255.255.255.252
+ ip nat inside
+ encapsulation ppp
+ ppp authentication chap
+!
+interface Serial0/1/1
+ description SERIAL CONNECTION TO R3
+ ip address 191.22.47.1 255.255.255.252
+ ip nat outside
+!
+interface GigabitEthernet0
+ vrf forwarding Mgmt-intf
+ no ip address
+ shutdown
+ negotiation auto
+!
+router ospf 1
+ passive-interface default
+ no passive-interface Serial0/1/0
+ network 85.0.5.128 0.0.0.31 area 0
+ network 85.0.5.168 0.0.0.3 area 0
+ default-information originate
+!
+ip nat pool POOL_VLAN1 135.12.64.1 135.12.64.42 netmask 255.255.255.128
+ip nat pool POOL_VLAN586 135.12.64.43 135.12.64.84 netmask 255.255.255.128
+ip nat pool POOL_VLAN867 135.12.64.85 135.12.64.126 netmask 255.255.255.128
+ip nat inside source list natacl_vlan1 pool POOL_VLAN1 overload
+ip nat inside source list natacl_vlan586 pool POOL_VLAN586 overload
+ip nat inside source list natacl_vlan867 pool POOL_VLAN867 overload
+ip forward-protocol nd
+ip http server
+ip http authentication local
+ip http secure-server
+ip tftp source-interface GigabitEthernet0
+ip route 0.0.0.0 0.0.0.0 191.22.47.2
+!
+!
+!
+ip access-list standard TELNETACL586
+ deny   85.0.0.0 0.0.3.255
+ permit any
+!
+ip access-list extended natacl_vlan1
+ permit ip 85.0.5.160 0.0.0.7 any
+ip access-list extended natacl_vlan586
+ permit ip 85.0.0.0 0.0.3.255 any
+ip access-list extended natacl_vlan867
+ permit ip 85.0.4.0 0.0.0.255 any
+!
+!
+!
+!
+control-plane
+!
+banner motd ^CC^C
+!
+line con 0
+ logging synchronous
+ transport input none
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ access-class TELNETACL586 in
+ password cisco
+ login
+!
+wsma agent exec
+!
+wsma agent config
+!
+wsma agent filesys
+!
+wsma agent notify
+!
+!
+end
+
+Daspur_R2#
+
+
+
+=========================================
+ISP_R3 (Router)
+=========================================
+
+
+ISP_R3#sh run
+Building configuration...
+
+
+Current configuration : 2061 bytes
+!
+! Last configuration change at 17:24:22 UTC Fri Oct 24 2025
+!
+version 16.7
+no service timestamps debug uptime
+no service timestamps log uptime
+platform qfp utilization monitor load 80
+no platform punt-keepalive disable-kernel-core
+!
+hostname ISP_R3
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+!
+!
+!
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+license udi pid ISR4321/K9 sn FDO234603PZ
+license boot suite FoundationSuiteK9
+license boot level securityk9
+no license smart enable
+diagnostic bootup level minimal
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+!
+!
+!
+redundancy
+ mode none
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description LOOPBACK 0
+ ip address 154.3.0.1 255.255.0.0
+!
+interface Loopback1
+ description LOOPBACK 1
+ ip address 18.0.0.1 255.0.0.0
+!
+interface Loopback2
+ description LOOPBACK 2
+ ip address 165.55.0.1 255.255.0.0
+!
+interface Loopback3
+ description LOOPBACK 3
+ ip address 201.12.80.1 255.255.255.0
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface Serial0/1/0
+ no ip address
+ shutdown
+!
+interface Serial0/1/1
+ description SERIAL CONNECTION TO R2
+ ip address 191.22.47.2 255.255.255.252
+!
+interface Serial0/2/0
+ no ip address
+!
+interface Serial0/2/1
+ no ip address
+!
+interface GigabitEthernet0
+ vrf forwarding Mgmt-intf
+ no ip address
+ negotiation auto
+!
+ip forward-protocol nd
+no ip http server
+ip http secure-server
+ip tftp source-interface GigabitEthernet0
+ip route 135.12.64.0 255.255.255.128 191.22.47.1
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner motd ^CC^C
+!
+line con 0
+ logging synchronous
+ transport input none
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ login
+!
+wsma agent exec
+!
+wsma agent config
+!
+wsma agent filesys
+!
+wsma agent notify
+!
+!
+end
+
+ISP_R3#
+
+
