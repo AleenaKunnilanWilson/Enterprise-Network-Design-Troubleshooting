@@ -73,7 +73,6 @@ Key technologies implemented include:
 - 🛣️ [Korba_R1 Routing Table](Scenario-5-Korba_R1-Routing-Table.png)
 - 🌐 [Raipur_R2 OSPF Configuration](Scenario-5-Raipur_R2-OSPF-Configuration.png)
 - 🛣️ [Raipur_R2 Routing Table](Scenario-5-Raipur_R2-Routing-Table.png)
-- 🔒 [NAT Configuration](Scenario-5-NAT-Configuration.png)
 
 ### Scenario 5-C (Credit)
 
@@ -85,6 +84,7 @@ Key technologies implemented include:
 
 ### Scenario 5-D (Distinction)
 
+- 🔒 [NAT Configuration](Scenario-5-NAT-Configuration.png)
 - 📋 [NAT Translation Table](Scenario-5-NAT-Translation-Table.png)
 - 🌐 [Internet Connectivity Verification](Scenario-5-Internet-Connectivity-Verification.png)
 
