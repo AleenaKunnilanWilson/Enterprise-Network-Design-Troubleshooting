@@ -4,7 +4,7 @@
 
 This scenario demonstrates the implementation of a complete enterprise network using Cisco Packet Tracer. The network integrates VLANs, Inter-VLAN Routing, OSPF dynamic routing, Access Control Lists (ACLs), DHCP, NAT/PAT, and Point-to-Point Protocol (PPP) with CHAP authentication.
 
-The scenario is completed in two stages. The Pass task consolidates enterprise networking concepts from previous scenarios, while the Credit task extends the network by implementing PPP encapsulation and CHAP authentication between the gateway router and the ISP.
+This scenario is completed in two stages. The Pass task implements a complete enterprise network using VLANs, Inter-VLAN Routing, OSPF, ACLs, DHCP, NAT/PAT, and static routing. The Credit task extends the implementation by configuring PPP encapsulation and CHAP authentication between Nagri_R1 and Daspur_R2, followed by connectivity verification across the authenticated serial link.
 
 ---
 
@@ -19,7 +19,7 @@ Implement the enterprise network by:
 - Implementing Access Control Lists (ACLs)
 - Configuring DHCP services
 - Configuring NAT/PAT
-- Configuring static routing on the ISP router
+- Configuring static routing where required
 - Verifying end-to-end network connectivity
 
 ### Scenario 6-C (Credit)
@@ -27,16 +27,16 @@ Implement the enterprise network by:
 Extend the Pass implementation by:
 
 - Configuring PPP encapsulation on the serial link
-- Configuring CHAP authentication between the gateway router and the ISP router
+- Configuring CHAP authentication between Nagri_R1 and Daspur_R2
 - Verifying successful PPP link establishment
 - Verifying successful CHAP authentication
-- Testing end-to-end connectivity across the PPP link
+- Testing end-to-end connectivity across the authenticated PPP link
 
 ---
 
 ## ⚙️ Implementation
 
-The network was implemented using Cisco Packet Tracer and configured through Cisco IOS CLI.
+The network was implemented using Cisco Packet Tracer and configured using Cisco IOS CLI. The implementation combines enterprise networking technologies with secure WAN connectivity using PPP and CHAP authentication.
 
 Key technologies implemented include:
 
@@ -46,9 +46,9 @@ Key technologies implemented include:
 - Access Control Lists (ACLs)
 - DHCP
 - NAT/PAT
+- Static Routing
 - PPP Encapsulation
 - CHAP Authentication
-- Static Routing
 - Connectivity Verification
 - Network Troubleshooting
 
